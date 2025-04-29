@@ -308,7 +308,7 @@ def main():
     if args.model_name == 'Unet':
         model = Unet.U_Net(args)
         if args.pretrained == True:
-            Unet_path = '../trained_models/LiTS_Unet/2023-11-20-13-37-40/epoch296-val_loss:0.0743-val_dice2:0.7737_model.pth'
+            Unet_path = './trained_models/LiTS2017_git.pth'
     if args.model_name == 'AttUnet':
         model = Unet.AttU_Net(args)
     if args.model_name == 'res_unet_plus':
