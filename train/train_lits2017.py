@@ -291,12 +291,12 @@ def main():
 
     cudnn.benchmark = True
     if args.model_name == 'Unet3D':
-        img_paths = glob('../data/train_image3D/*')
-        mask_paths = glob('../data/train_mask3D/*')
+        img_paths = glob('./data/train_image3D/*')
+        mask_paths = glob('./data/train_mask3D/*')
     else:
         # Data loading code
-        img_paths = glob('../data/trainImage_lits2017_png/*')
-        mask_paths = glob('../data/trainMask_lits2017_png/*')
+        img_paths = glob('./data/trainImage_lits2017_png/*')
+        mask_paths = glob('./data/trainMask_lits2017_png/*')
 
     train_img_paths, val_img_paths, train_mask_paths, val_mask_paths = \
         train_test_split(img_paths, mask_paths, test_size=0.3, random_state=seed_value)
