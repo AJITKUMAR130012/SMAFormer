@@ -62,7 +62,7 @@ def parse_args():
     parser.add_argument('--loss', default='BCEDiceLoss')
 
     # training
-    parser.add_argument('--epochs', default=999, type=int, metavar='N',
+    parser.add_argument('--epochs', default=50, type=int, metavar='N',
                         help='number of total epochs to run')
     parser.add_argument('--early-stop', default=500, type=int,
                         metavar='N', help='early stopping (default: 30)')
@@ -416,13 +416,13 @@ def main():
         batch_size=args.batch_size,
         shuffle=True,
         pin_memory=True,
-        num_workers=4,
+        num_workers=2,
         drop_last=False)
     val_loader = torch.utils.data.DataLoader(
         val_dataset,
         batch_size=args.batch_size,
         shuffle=False,
-        num_workers=4,
+        num_workers=2,
         pin_memory=True,
         drop_last=False)
 
