@@ -31,8 +31,13 @@ import numpy as np
 mandatory change 
 if model change
 '''
-model_path = '/content/drive/MyDrive/SMAFormer/Trained_models/LiTS2017_git.pth'
-csv_path = '/content/SMAFormer/trained_models/SMAFormer_medAug_BCEDiceLoss_batchsize_20.csv'
+# model_path = '/content/drive/MyDrive/SMAFormer/Trained_models/LiTS2017_git.pth'
+# csv_path = '/content/SMAFormer/trained_models/SMAFormer_medAug_BCEDiceLoss_batchsize_20.csv'
+
+model_path = '/content/drive/MyDrive/Trained_models/epoch46-val_loss_0.1873-val_dice2_1.0000_model.pth'
+csv_path = '/content/drive/MyDrive/Trained_models/SMAFormer_medAug_BCEDiceLoss_batchsize_20.csv'
+
+
 save_pred_png_trigger = True
 pred_png_path = '../pred_result/xxx'
 if not os.path.exists(pred_png_path):
@@ -84,8 +89,11 @@ def main():
     args = parse_args()
 
     # Data loading
-    img_paths = sorted(glob('../data/testImage_lits2017_png/*'))
-    mask_paths = sorted(glob('../data/testMask_lits2017_png/*'))
+    # img_paths = sorted(glob('../data/testImage_lits2017_png/*'))
+    # mask_paths = sorted(glob('../data/testMask_lits2017_png/*'))
+
+    img_paths = sorted(glob('/content/SMAFormer/data/testImage_lits2017_png/*'))
+    mask_paths = sorted(glob('/content/SMAFormer/data/testMask_lits2017_png/*'))
     # test_img_paths, giveup_ct, test_mask_paths, giveup_mask = \
     #     train_test_split(img_paths, mask_paths, test_size=0.1, random_state=2024)
 
