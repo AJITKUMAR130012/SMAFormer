@@ -13,8 +13,8 @@ from sklearn.model_selection import train_test_split
 from utilities.metrics import dice_coef_lits, iou_score, fnr_score, fpr_score, assd_score, rmsd_score, msd_score, accuracy,f1_score, ppv, sensitivity, rvd_score
 import utilities.losses as loss_fun
 from torch.utils.data import DataLoader
-from dataset.dataset import Dataset_ssl_lits2017_png
-from net.SMAFormer_git import SMAFormer
+from dataset.SMAFormer_dataset import Dataset_ssl_lits2017_png
+from net.SMAFormer_LiTS import SMAFormer
 from calflops import calculate_flops
 import pandas as pd
 from PIL import Image
@@ -31,8 +31,8 @@ import numpy as np
 mandatory change 
 if model change
 '''
-model_path = '../pretrain/xxx'
-csv_path = '../trained_models/xxx/'
+model_path = '/content/drive/MyDrive/SMAFormer/Trained_models/LiTS2017_git.pth'
+csv_path = '/content/SMAFormer/trained_models/SMAFormer_medAug_BCEDiceLoss_batchsize_20.csv'
 save_pred_png_trigger = True
 pred_png_path = '../pred_result/xxx'
 if not os.path.exists(pred_png_path):
