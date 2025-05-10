@@ -295,9 +295,10 @@ def main():
         mask_paths = glob('./data/train_mask3D/*')
     else:
         # Data loading code
-        img_paths = glob('/content/SMAFormer/data/trainImage_lits2017_png/*')
-        mask_paths = glob('/content/SMAFormer/data/trainMask_lits2017_png/*')
-
+        img_paths = glob('/content/drive/MyDrive/SMAFormer/train/images/*')
+        mask_paths = glob('/content/drive/MyDrive/SMAFormer/train/labels/*')
+    print(len(img_paths))
+    print(len(mask_paths))
     train_img_paths, val_img_paths, train_mask_paths, val_mask_paths = \
         train_test_split(img_paths, mask_paths, test_size=0.3, random_state=seed_value)
     print("train_num:%s" % str(len(train_img_paths)))
@@ -324,8 +325,7 @@ def main():
         model = sepnet.sepnet(args)
     if args.model_name == 'SMAFormer':
         model = SMAFormer(args)
-        pretrained_path = '/content/SMAFormer/trained_models/LiTS2017_git.pth'
-
+        pretrained_path = '/content/drive/MyDrive/SMAFormer/Trained_models/LiTS2017_git.pth'
     model = torch.nn.DataParallel(model).cuda()
 
     '''
@@ -529,7 +529,7 @@ def main():
             log = log.reindex(columns=tmp.index.tolist())
             # log = log._append(tmp, ignore_index=True)
             # 使用 pd.concat 替代 append
-            log = pd.concat([log, tmp.to_frame().T], ignore_index=True)
+            #log = pd.concat([log, tmp.to_frame().T], ignore_index=True)
             log.to_csv('../trained_models/{}_{}/{}/{}_{}_{}_batchsize_{}.csv'.format(args.dataset, args.model_name, timestamp,
                                                                                  args.model_name, args.aug, args.loss,
                                                                                  args.batch_size), index=False)
