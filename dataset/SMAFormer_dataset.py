@@ -77,12 +77,13 @@ class Dataset_ssl_lits2017_png(torch.utils.data.Dataset):
         mask_path = self.mask_paths[idx]
         ct = Image.open(img_path)
         seg = Image.open(mask_path)
-        npimage = np.array(ct)
-        npmask = np.array(seg)
         ct = ct.resize((512, 512), Image.BILINEAR)  # BILINEAR for images
         seg = seg.resize((512, 512), Image.NEAREST)  # NEAREST for masks to preserve labels
-        print("ct.size:{}".format(npimage.shape))
-        print("seg.size:{}".format(npmask.shape))
+        npimage = np.array(ct)
+        npmask = np.array(seg)
+        
+        #print("ct.size:{}".format(npimage.shape))
+        #print("seg.size:{}".format(npmask.shape))
         # 将灰度图像的形状从 (512, 512) 增纬为 (512, 512, 1)
         # npimage = npimage[:, :, np.newaxis]
         npimage = np.expand_dims(npimage, axis=2)   #[512,512,1]
