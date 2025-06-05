@@ -67,7 +67,7 @@ def parse_args():
     parser.add_argument('--early-stop', default=500, type=int,
                         metavar='N', help='early stopping (default: 30)')
     parser.add_argument('--gamma', default=1.0, type=float)
-    parser.add_argument('-b', '--batch_size', default=20, type=int,
+    parser.add_argument('-b', '--batch_size', default=5, type=int,
                         metavar='N', help='check your GPU')
     parser.add_argument('--optimizer', default='SGD',
                         choices=['Adam', 'SGD','AdamW'])
@@ -299,6 +299,8 @@ def main():
         mask_paths = glob('/content/drive/MyDrive/SMAFormer/train/labels/*')
     print(len(img_paths))
     print(len(mask_paths))
+    img_paths=img_paths[0:500]
+    mask_paths=mask_paths[0:500]
     train_img_paths, val_img_paths, train_mask_paths, val_mask_paths = \
         train_test_split(img_paths, mask_paths, test_size=0.3, random_state=seed_value)
     print("train_num:%s" % str(len(train_img_paths)))
